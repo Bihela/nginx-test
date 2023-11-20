@@ -1,0 +1,682 @@
+
+CC =	cc
+CFLAGS = 
+CPP =	
+LINK =	$(CC)
+
+END
+
+
+if test -n ""; then
+    echo NGX_PERL_CFLAGS =                    >> objs/Makefile
+    echo NGX_PM_CFLAGS =                        >> objs/Makefile
+    echo NGX_PM_LDFLAGS =                      >> objs/Makefile
+fi
+
+
+# ALL_INCS, required by the addons and by OpenWatcom C precompiled headers
+
+ngx_incs=src/core objs 
+
+cat << END                                                    >> objs/Makefile
+
+ALL_INCS = -I 
+
+END
+
+
+ngx_all_srcs="src/core/nginx.c \
+           src/core/ngx_log.c \
+           src/core/ngx_palloc.c \
+           src/core/ngx_array.c \
+           src/core/ngx_list.c \
+           src/core/ngx_hash.c \
+           src/core/ngx_buf.c \
+           src/core/ngx_queue.c \
+           src/core/ngx_output_chain.c \
+           src/core/ngx_string.c \
+           src/core/ngx_parse.c \
+           src/core/ngx_parse_time.c \
+           src/core/ngx_inet.c \
+           src/core/ngx_file.c \
+           src/core/ngx_crc32.c \
+           src/core/ngx_murmurhash.c \
+           src/core/ngx_md5.c \
+           src/core/ngx_sha1.c \
+           src/core/ngx_rbtree.c \
+           src/core/ngx_radix_tree.c \
+           src/core/ngx_slab.c \
+           src/core/ngx_times.c \
+           src/core/ngx_shmtx.c \
+           src/core/ngx_connection.c \
+           src/core/ngx_cycle.c \
+           src/core/ngx_spinlock.c \
+           src/core/ngx_rwlock.c \
+           src/core/ngx_cpuinfo.c \
+           src/core/ngx_conf_file.c \
+           src/core/ngx_module.c \
+           src/core/ngx_resolver.c \
+           src/core/ngx_open_file_cache.c \
+           src/core/ngx_crypt.c \
+           src/core/ngx_proxy_protocol.c \
+           src/core/ngx_syslog.c"
+
+
+# the core dependencies and include paths
+
+ngx_deps=src/core/nginx.h  src/core/ngx_config.h  src/core/ngx_core.h  src/core/ngx_log.h  src/core/ngx_palloc.h  src/core/ngx_array.h  src/core/ngx_list.h  src/core/ngx_hash.h  src/core/ngx_buf.h  src/core/ngx_queue.h  src/core/ngx_string.h  src/core/ngx_parse.h  src/core/ngx_parse_time.h  src/core/ngx_inet.h  src/core/ngx_file.h  src/core/ngx_crc.h  src/core/ngx_crc32.h  src/core/ngx_murmurhash.h  src/core/ngx_md5.h  src/core/ngx_sha1.h  src/core/ngx_rbtree.h  src/core/ngx_radix_tree.h  src/core/ngx_rwlock.h  src/core/ngx_slab.h  src/core/ngx_times.h  src/core/ngx_shmtx.h  src/core/ngx_connection.h  src/core/ngx_cycle.h  src/core/ngx_conf_file.h  src/core/ngx_module.h  src/core/ngx_resolver.h  src/core/ngx_open_file_cache.h  src/core/ngx_crypt.h  src/core/ngx_proxy_protocol.h  src/core/ngx_syslog.h objs/ngx_auto_config.h  
+
+ngx_incs=src/core objs 
+
+cat << END                                                    >> objs/Makefile
+
+CORE_DEPS = 
+
+
+CORE_INCS = -I 
+
+END
+
+
+# the http dependencies and include paths
+
+if [ YES = YES ]; then
+
+    ngx_all_srcs=" "
+
+    ngx_deps=
+
+    ngx_incs=
+
+    cat << END                                                >> objs/Makefile
+
+HTTP_DEPS = 
+
+
+HTTP_INCS = -I 
+
+END
+
+fi
+
+
+# the mail dependencies and include paths
+
+if [ NO != NO ]; then
+
+    if [ NO = YES ]; then
+        ngx_all_srcs=" "
+    fi
+
+    ngx_deps=
+
+    ngx_incs=
+
+    cat << END                                                >> objs/Makefile
+
+MAIL_DEPS = 
+
+
+MAIL_INCS = -I 
+
+END
+
+fi
+
+
+# the stream dependencies and include paths
+
+if [ NO != NO ]; then
+
+    if [ NO = YES ]; then
+        ngx_all_srcs=" "
+    fi
+
+    ngx_deps=
+
+    ngx_incs=
+
+    cat << END                                                >> objs/Makefile
+
+STREAM_DEPS = 
+
+
+STREAM_INCS = -I 
+
+END
+
+fi
+
+
+ngx_all_srcs=" "
+
+
+if test -n ""; then
+
+cat << END                                                >> objs/Makefile
+
+ADDON_DEPS = $(CORE_DEPS) 
+
+END
+
+fi
+
+
+# nginx
+
+ngx_all_srcs=
+
+for ngx_src in 
+do
+    ngx_obj="addon/"
+
+    test -d objs/ || mkdir -p objs/
+
+    ngx_obj=/ 
+
+    ngx_all_srcs=" "
+done
+
+ngx_all_objs=
+
+ngx_modules_c=objs/ngx_modules.c
+
+ngx_modules_obj=
+
+
+if test -n ""; then
+   ngx_res=
+else
+   ngx_res=" "
+   ngx_rcc=
+fi
+
+ngx_deps=
+
+ngx_objs=
+
+ngx_libs=
+if test -n ""; then
+    ngx_libs= 
+fi
+
+ngx_link=
+
+ngx_main_link= 
+
+
+cat << END                                                    >> objs/Makefile
+
+build:	binary modules manpage
+
+binary:	objs/nginx
+
+objs/nginx:	
+	$(LINK) -o objs/nginx \
+	
+	
+
+
+modules:
+END
+
+
+# ngx_modules.c
+
+if test -n ""; then
+    ngx_cc="$(CC) -c $(CFLAGS)  $(ALL_INCS)"
+else
+    ngx_cc="$(CC) -c $(CFLAGS) $(CORE_INCS)"
+fi
+
+cat << END                                                    >> objs/Makefile
+
+:	$(CORE_DEPS) \
+	
+	 \
+		-o  \
+		
+
+END
+
+
+# the core sources
+
+for ngx_src in src/core/nginx.c \
+           src/core/ngx_log.c \
+           src/core/ngx_palloc.c \
+           src/core/ngx_array.c \
+           src/core/ngx_list.c \
+           src/core/ngx_hash.c \
+           src/core/ngx_buf.c \
+           src/core/ngx_queue.c \
+           src/core/ngx_output_chain.c \
+           src/core/ngx_string.c \
+           src/core/ngx_parse.c \
+           src/core/ngx_parse_time.c \
+           src/core/ngx_inet.c \
+           src/core/ngx_file.c \
+           src/core/ngx_crc32.c \
+           src/core/ngx_murmurhash.c \
+           src/core/ngx_md5.c \
+           src/core/ngx_sha1.c \
+           src/core/ngx_rbtree.c \
+           src/core/ngx_radix_tree.c \
+           src/core/ngx_slab.c \
+           src/core/ngx_times.c \
+           src/core/ngx_shmtx.c \
+           src/core/ngx_connection.c \
+           src/core/ngx_cycle.c \
+           src/core/ngx_spinlock.c \
+           src/core/ngx_rwlock.c \
+           src/core/ngx_cpuinfo.c \
+           src/core/ngx_conf_file.c \
+           src/core/ngx_module.c \
+           src/core/ngx_resolver.c \
+           src/core/ngx_open_file_cache.c \
+           src/core/ngx_crypt.c \
+           src/core/ngx_proxy_protocol.c \
+           src/core/ngx_syslog.c
+do
+    ngx_src=
+    ngx_obj=
+
+    cat << END                                                >> objs/Makefile
+
+:	$(CORE_DEPS) \
+	
+	 \
+		-o  \
+		
+
+END
+
+done
+
+
+# the http sources
+
+if [ YES = YES ]; then
+
+    if test -n ""; then
+        ngx_cc="$(CC) -c $(CFLAGS)  $(ALL_INCS)"
+    else
+        ngx_cc="$(CC) -c $(CFLAGS) $(CORE_INCS) $(HTTP_INCS)"
+        ngx_perl_cc="$(CC) -c $(NGX_PERL_CFLAGS)"
+        ngx_perl_cc=" $(CORE_INCS) $(HTTP_INCS)"
+    fi
+
+    for ngx_source in 
+    do
+        ngx_src=
+        ngx_obj=
+
+        if [  = src/http/modules/perl/ngx_http_perl_module.c ]; then
+
+            cat << END                                        >> objs/Makefile
+
+:	$(CORE_DEPS) $(HTTP_DEPS) \
+	
+	 \
+		-o  \
+		
+
+END
+        else
+
+            cat << END                                        >> objs/Makefile
+
+:	$(CORE_DEPS) $(HTTP_DEPS) \
+	
+	 \
+		-o  \
+		
+
+END
+
+        fi
+    done
+
+fi
+
+
+# the mail sources
+
+if [ NO = YES ]; then
+
+    if test -n ""; then
+        ngx_cc="$(CC) -c $(CFLAGS)  $(ALL_INCS)"
+    else
+        ngx_cc="$(CC) -c $(CFLAGS) $(CORE_INCS) $(MAIL_INCS)"
+    fi
+
+    for ngx_src in 
+    do
+        ngx_src=
+        ngx_obj=
+
+        cat << END                                            >> objs/Makefile
+
+:	$(CORE_DEPS) $(MAIL_DEPS) \
+	
+	 \
+		-o  \
+		
+
+END
+    done
+
+fi
+
+
+# the stream sources
+
+if [ NO = YES ]; then
+
+    if test -n ""; then
+        ngx_cc="$(CC) -c $(CFLAGS)  $(ALL_INCS)"
+    else
+        ngx_cc="$(CC) -c $(CFLAGS) $(CORE_INCS) $(STREAM_INCS)"
+    fi
+
+    for ngx_src in 
+    do
+        ngx_src=
+        ngx_obj=
+
+        cat << END                                            >> objs/Makefile
+
+:	$(CORE_DEPS) $(STREAM_DEPS) \
+	
+	 \
+		-o  \
+		
+
+END
+    done
+
+fi
+
+
+# the misc sources
+
+if test -n ""; then
+
+    ngx_cc="$(CC) -c $(CFLAGS)  $(ALL_INCS)"
+
+    for ngx_src in 
+    do
+        ngx_src=
+        ngx_obj=
+
+        cat << END                                            >> objs/Makefile
+
+:	$(CORE_DEPS)  \
+	
+	 \
+		-o  \
+		
+
+END
+    done
+
+fi
+
+
+# the addons sources
+
+if test -n ""; then
+
+    ngx_cc="$(CC) -c $(CFLAGS)  $(ALL_INCS)"
+
+    for ngx_src in 
+    do
+        ngx_obj="addon/"
+
+        ngx_obj=/ 
+
+        ngx_obj=
+
+        ngx_src=
+
+        cat << END                                            >> objs/Makefile
+
+:	$(ADDON_DEPS) \
+	
+	 \
+		-o  \
+		
+
+END
+    done
+
+fi
+
+
+# the addons config.make
+
+if test -n ""; then
+
+    for ngx_addon_dir in  
+    do
+        if test -f /config.make; then
+            . /config.make
+        fi
+    done
+fi
+
+
+# Win32 resource file
+
+if test -n ""; then
+
+    ngx_res=:	  
+    ngx_rcc=
+
+    cat << END                                                >> objs/Makefile
+
+
+	
+
+END
+
+fi
+
+
+# the precompiled headers
+
+if test -n ""; then
+    echo "#include <ngx_config.h>" > objs/ngx_pch.c
+
+    ngx_pch="src/core/ngx_config.h  objs/ngx_auto_config.h"
+    ngx_pch=:	
+
+    ngx_src="$(CC) $(CFLAGS)  -c $(ALL_INCS)"
+    ngx_src=" -o objs/ngx_pch.obj objs/ngx_pch.c"
+    ngx_src=
+
+    cat << END                                                >> objs/Makefile
+
+
+	
+
+END
+
+fi
+
+
+# dynamic modules
+
+if test -n ""; then
+    ngx_cc="$(CC) -c -fPIC $(CFLAGS)  $(ALL_INCS)"
+else
+    ngx_cc="$(CC) -c -fPIC $(CFLAGS) $(ALL_INCS)"
+    ngx_perl_cc="$(CC) -c -fPIC $(NGX_PERL_CFLAGS)"
+    ngx_perl_cc=" $(ALL_INCS)"
+fi
+
+for ngx_module in 
+do
+    eval ngx_module_srcs="$_SRCS"
+    eval ngx_module_shrd="$_SHRD"
+    eval eval ngx_module_libs="\\"$_LIBS\\""
+
+    eval ngx_module_modules="$_MODULES"
+    eval ngx_module_order="$_ORDER"
+
+    ngx_modules_c=objs/_modules.c
+
+    cat << END                                    > 
+
+#include <ngx_config.h>
+#include <ngx_core.h>
+
+END
+
+    for mod in 
+    do
+        echo "extern ngx_module_t  ;"         >> 
+    done
+
+    echo                                          >> 
+    echo 'ngx_module_t *ngx_modules[] = {'        >> 
+
+    for mod in 
+    do
+        echo "    &,"                         >> 
+    done
+
+    cat << END                                    >> 
+    NULL
+};
+
+END
+
+    echo 'char *ngx_module_names[] = {'           >> 
+
+    for mod in 
+    do
+        echo "    \"\","                      >> 
+    done
+
+    cat << END                                    >> 
+    NULL
+};
+
+END
+
+    echo 'char *ngx_module_order[] = {'           >> 
+
+    for mod in 
+    do
+        echo "    \"\","                      >> 
+    done
+
+    cat << END                                    >> 
+    NULL
+};
+
+END
+
+    ngx_modules_c=
+
+    ngx_modules_obj=
+
+    ngx_module_objs=
+    for ngx_src in  
+    do
+        case "" in
+            src/*)
+                ngx_obj=
+                ;;
+            *)
+                ngx_obj="addon/"
+                mkdir -p objs/
+                ngx_obj="/"
+                ;;
+        esac
+
+        ngx_module_objs=" "
+    done
+
+    ngx_module_objs=
+
+    ngx_deps=
+
+    ngx_objs=
+
+    ngx_obj=objs/.so
+
+    if [ "" = win32 ]; then
+        ngx_module_libs=" "
+    fi
+
+    ngx_libs=
+    if test -n ""; then
+        ngx_libs= 
+    fi
+
+    ngx_link=
+
+    ngx_module_link=-shared 
+
+
+    cat << END                                            >> objs/Makefile
+
+modules:	
+
+:	
+	$(LINK) -o  \
+	
+
+
+:	$(CORE_DEPS) \
+	
+	 \
+		-o  \
+		
+
+END
+
+    for ngx_source in 
+    do
+        case "" in
+            src/*)
+                ngx_obj=
+                ;;
+            *)
+                ngx_obj="addon/"
+                ngx_obj=/ 
+                ;;
+        esac
+
+        ngx_obj=
+
+        ngx_src=
+
+        if [  = src/http/modules/perl/ngx_http_perl_module.c ]; then
+
+            cat << END                                        >> objs/Makefile
+
+:	$(ADDON_DEPS) \
+	
+	 \
+		-o  \
+		
+
+END
+        else
+
+            cat << END                                        >> objs/Makefile
+
+:	$(ADDON_DEPS) \
+	
+	 \
+		-o  \
+		
+
+END
+
+        fi
+    done
+done

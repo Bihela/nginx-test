@@ -1,0 +1,96 @@
+
+#ifndef NGX_PREFIX
+#define NGX_PREFIX  "/"
+#endif
+
+END
+
+#ifndef NGX_CONF_PREFIX
+#define NGX_CONF_PREFIX  "/"
+#endif
+
+END
+
+#ifndef NGX_SBIN_PATH
+#define NGX_SBIN_PATH  ""
+#endif
+
+END
+
+#ifndef NGX_CONF_PATH
+#define NGX_CONF_PATH  ""
+#endif
+
+END
+
+#ifndef NGX_PID_PATH
+#define NGX_PID_PATH  ""
+#endif
+
+END
+
+#ifndef NGX_LOCK_PATH
+#define NGX_LOCK_PATH  ""
+#endif
+
+END
+
+#ifndef NGX_ERROR_LOG_PATH
+#define NGX_ERROR_LOG_PATH  ""
+#endif
+
+END
+
+#ifndef NGX_HTTP_LOG_PATH
+#define NGX_HTTP_LOG_PATH  ""
+#endif
+
+END
+
+#ifndef NGX_HTTP_CLIENT_TEMP_PATH
+#define NGX_HTTP_CLIENT_TEMP_PATH  ""
+#endif
+
+END
+
+#ifndef NGX_HTTP_PROXY_TEMP_PATH
+#define NGX_HTTP_PROXY_TEMP_PATH  ""
+#endif
+
+END
+
+#ifndef NGX_HTTP_FASTCGI_TEMP_PATH
+#define NGX_HTTP_FASTCGI_TEMP_PATH  ""
+#endif
+
+END
+
+#ifndef NGX_HTTP_UWSGI_TEMP_PATH
+#define NGX_HTTP_UWSGI_TEMP_PATH  ""
+#endif
+
+END
+
+#ifndef NGX_HTTP_SCGI_TEMP_PATH
+#define NGX_HTTP_SCGI_TEMP_PATH  ""
+#endif
+
+END
+
+#ifndef NGX_USER
+#define NGX_USER  ""
+#endif
+
+END
+
+#ifndef NGX_GROUP
+#define NGX_GROUP  ""
+#endif
+
+END
+
+#ifndef NGX_BUILD
+#define NGX_BUILD  ""
+#endif
+
+END
